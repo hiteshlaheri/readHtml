@@ -1,0 +1,13 @@
+{
+  "name": "readhtml",
+  "version": "0.0.1",
+  "description": "ReadHtml",
+  "dependencies": {
+    "url": "latest",
+    "http": "latest"
+  }
+"scripts": {
+    "start":"node index"
+  }
+
+}
