@@ -4,7 +4,9 @@ var options = {
     host: 'www.betaar3.com',
     path: '/jsp/BT60B.jsp?Submit=Refresh'
 }
+var seconds = 30, the_interval = seconds * 1000;
 var trimmedWordsh;
+setInterval(function() {
 var request = http.request(options, function (res) {
     var data = '';
     res.on('data', function (chunk) {
@@ -22,8 +24,9 @@ request.on('error', function (e) {
     console.log(e.message);
 });
 request.end();
+},the_interval);
 http.createServer(function (req, res) {
 res.writeHead(200, {'Content-Type': 'text/html'});
-res.write('<html>    <h1>Lattitude:'+trimmedWordsh[6]+'   Longittude:'+trimmedWordsh[7]+' </h1> <div> <a href="geo:'+trimmedWordsh[6]+','+trimmedWordsh[7]+'?z=zoom">Click to View first Location of betaar3.com in Android Phone.</a>   </div></html>');
+res.write('<html>    <h1>Lattitude:'+trimmedWordsh[6]+'   Longitude:'+trimmedWordsh[7]+' </h1> <div> <a href="google.navigation:q='+trimmedWordsh[6]+','+trimmedWordsh[7]+'">Click to View first Location of betaar3.com in Android Phone.</a>   </div></html>');
 res.end();
 }).listen(8080);
